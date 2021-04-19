@@ -1,5 +1,5 @@
 # Little FORTRAN Compiler
- A FORTRAN "like" compiler.
+ A FORTRAN "like" compiler. Created in C++11.
 
 A compiler is a computer program (or set of programs) that transforms source code written in a programming language into another computer language.
 
