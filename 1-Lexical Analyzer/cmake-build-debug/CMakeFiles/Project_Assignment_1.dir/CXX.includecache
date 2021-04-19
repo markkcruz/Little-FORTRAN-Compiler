@@ -1,0 +1,32 @@
+#IncludeRegexLine: ^[ 	]*[#%][ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+C:/Dev C++/CS280 Programming Language Concepts/Project Assignment 1/lex.cpp
+lex.h
+C:/Dev C++/CS280 Programming Language Concepts/Project Assignment 1/lex.h
+string
+-
+cctype
+-
+iostream
+-
+cstring
+-
+cstdio
+-
+algorithm
+-
+
+C:/Dev C++/CS280 Programming Language Concepts/Project Assignment 1/lex.h
+string
+-
+iostream
+-
+map
+-
+
