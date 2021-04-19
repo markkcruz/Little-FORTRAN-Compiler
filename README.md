@@ -9,4 +9,4 @@ A compiler is a computer program (or set of programs) that transforms source cod
 
 2. Syntactic analysis (parsing) is the process of analyzing a text,made of a sequence of tokens,to determine its grammatical structure with respect to a given formal grammar.
 
-3.Semantic analysis is the phase in which the compiler adds semantic information to the parse tree and builds the symbol table. This phase performs semantic checks such as type checking (checking for type errors),or object binding (associating variable and function references with their definitions),or definite assignment (requiring all local variables to be initialized before use),rejecting incorrect programs or issuing warnings.
+3. Semantic analysis is the phase in which the compiler adds semantic information to the parse tree and builds the symbol table. This phase performs semantic checks such as type checking (checking for type errors),or object binding (associating variable and function references with their definitions),or definite assignment (requiring all local variables to be initialized before use),rejecting incorrect programs or issuing warnings.
