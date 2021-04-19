@@ -1,0 +1,46 @@
+#IncludeRegexLine: ^[ 	]*[#%][ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+C:/Dev C++/CS280 Programming Language Concepts/Little-FORTRAN-Compiler/Little-FORTRAN-Compiler/3-Interpreter/lex.h
+string
+-
+iostream
+-
+map
+-
+
+C:/Dev C++/CS280 Programming Language Concepts/Little-FORTRAN-Compiler/Little-FORTRAN-Compiler/3-Interpreter/parserInt.h
+iostream
+-
+lex.h
+C:/Dev C++/CS280 Programming Language Concepts/Little-FORTRAN-Compiler/Little-FORTRAN-Compiler/3-Interpreter/lex.h
+val.h
+C:/Dev C++/CS280 Programming Language Concepts/Little-FORTRAN-Compiler/Little-FORTRAN-Compiler/3-Interpreter/val.h
+
+C:/Dev C++/CS280 Programming Language Concepts/Little-FORTRAN-Compiler/Little-FORTRAN-Compiler/3-Interpreter/prog3.cpp
+iostream
+-
+fstream
+-
+lex.h
+C:/Dev C++/CS280 Programming Language Concepts/Little-FORTRAN-Compiler/Little-FORTRAN-Compiler/3-Interpreter/lex.h
+val.h
+C:/Dev C++/CS280 Programming Language Concepts/Little-FORTRAN-Compiler/Little-FORTRAN-Compiler/3-Interpreter/val.h
+parserInt.h
+C:/Dev C++/CS280 Programming Language Concepts/Little-FORTRAN-Compiler/Little-FORTRAN-Compiler/3-Interpreter/parserInt.h
+
+C:/Dev C++/CS280 Programming Language Concepts/Little-FORTRAN-Compiler/Little-FORTRAN-Compiler/3-Interpreter/val.h
+iostream
+-
+string
+-
+queue
+-
+map
+-
+
