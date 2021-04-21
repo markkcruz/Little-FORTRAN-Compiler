@@ -88,6 +88,12 @@
 		<Unit filename="C:/Dev C++/CS280 Programming Language Concepts/Little-FORTRAN-Compiler/Little-FORTRAN-Compiler/3-Interpreter/lex.h">
 			<Option target="3_Interpreter"/>
 		</Unit>
+		<Unit filename="C:/Dev C++/CS280 Programming Language Concepts/Little-FORTRAN-Compiler/Little-FORTRAN-Compiler/3-Interpreter/parserInt.cpp">
+			<Option target="3_Interpreter"/>
+		</Unit>
+		<Unit filename="C:/Dev C++/CS280 Programming Language Concepts/Little-FORTRAN-Compiler/Little-FORTRAN-Compiler/3-Interpreter/parserInt.h">
+			<Option target="3_Interpreter"/>
+		</Unit>
 		<Unit filename="C:/Dev C++/CS280 Programming Language Concepts/Little-FORTRAN-Compiler/Little-FORTRAN-Compiler/3-Interpreter/prog3.cpp">
 			<Option target="3_Interpreter"/>
 		</Unit>

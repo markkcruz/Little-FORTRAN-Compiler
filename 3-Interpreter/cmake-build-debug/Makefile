@@ -154,6 +154,33 @@ lex.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles\3_Interpreter.dir\build.make /nologo -$(MAKEFLAGS) CMakeFiles\3_Interpreter.dir\lex.cpp.s
 .PHONY : lex.cpp.s
 
+parserInt.obj: parserInt.cpp.obj
+
+.PHONY : parserInt.obj
+
+# target to build an object file
+parserInt.cpp.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\3_Interpreter.dir\build.make /nologo -$(MAKEFLAGS) CMakeFiles\3_Interpreter.dir\parserInt.cpp.obj
+.PHONY : parserInt.cpp.obj
+
+parserInt.i: parserInt.cpp.i
+
+.PHONY : parserInt.i
+
+# target to preprocess a source file
+parserInt.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\3_Interpreter.dir\build.make /nologo -$(MAKEFLAGS) CMakeFiles\3_Interpreter.dir\parserInt.cpp.i
+.PHONY : parserInt.cpp.i
+
+parserInt.s: parserInt.cpp.s
+
+.PHONY : parserInt.s
+
+# target to generate assembly for a file
+parserInt.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\3_Interpreter.dir\build.make /nologo -$(MAKEFLAGS) CMakeFiles\3_Interpreter.dir\parserInt.cpp.s
+.PHONY : parserInt.cpp.s
+
 prog3.obj: prog3.cpp.obj
 
 .PHONY : prog3.obj
@@ -220,6 +247,9 @@ help:
 	@echo ... lex.obj
 	@echo ... lex.i
 	@echo ... lex.s
+	@echo ... parserInt.obj
+	@echo ... parserInt.i
+	@echo ... parserInt.s
 	@echo ... prog3.obj
 	@echo ... prog3.i
 	@echo ... prog3.s

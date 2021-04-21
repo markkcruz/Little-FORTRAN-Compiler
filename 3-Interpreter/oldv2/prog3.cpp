@@ -11,7 +11,7 @@
 
 #include "lex.h"
 #include "val.h"
-#include "parse.h"
+#include "parserInt.h"
 
 
 using namespace std;

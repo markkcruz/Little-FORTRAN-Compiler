@@ -1,4 +1,23 @@
 
+/*
+ * Grammar Rules
+ * Prog = PROGRAM IDENT {Decl} {Stmt} END PROGRAM IDENT
+ * Decl = (INTEGER|REAL|CHAR):IdList
+ * IdList = IDENT{,IDENT}
+ * Stmt = AssigStmt|IfStmt|PrintStmt
+ * PrintStmt=PRINT,ExprList
+ * IfStmt=IF(LogicExpr)THEN{Stmt}ENDIF
+ * AssignStmt = Var = Expr
+ * ExprList=Expr{,Expr}
+ * Expr = Term {(+|-)Term}
+ * Term = SFactor{(*|/)SFactor}
+ * SFactor = SignFactor|Factor
+ * LogicExpr = Expr (==|<) Expr
+ * Var = IDENT
+ * Sign= +|-
+ * Factor = IDENT|ICONST|RCONST|SCONST| (Expr)
+*/
+
 #include "val.h"
 
 
@@ -129,3 +148,31 @@
 		return Value();
 		
     }
+
+bool PrintStmt(istream& in,int& line){
+/*create an empty queue of Value objects.*/
+    ValQue = new queue<Value>;
+    bool ex = ExprList(in,line);
+    if(!ex){
+        ParseError(line,"Missing expression after print");
+        //Empty the queue and delete.
+        while(!(*ValQue).empty()){
+            ValQue->pop();
+        }
+        delete ValQue;
+        return false;
+    }
+    //Evaluate:print out the list of expressions' values
+    LexItem t = Parser::GetNextToken(in,line);
+    if(t.GetToken()==COMA){
+        //Execute the statement after making sure the comma is seen.
+        while(!(*ValQue).empty()){
+            Value nextVal = (*ValQue).front();
+            cout<<nextVal;
+            ValQue->pop();
+        }
+        cout<<endl;
+    }
+    Parser::PushBackToken(t);
+    return ex;
+}
