@@ -4,32 +4,61 @@
  * Spring 2021
 */
 
-#include "parse.h"
-static int error_count = 0;
+/*
+ * Grammar Rules
+ * Prog = PROGRAM IDENT {Decl} {Stmt} END PROGRAM IDENT
+ * Decl = (INTEGER|REAL|CHAR):IdList
+ * IdList = IDENT{,IDENT}
+ * Stmt = AssigStmt|IfStmt|PrintStmt
+ * PrintStmt=PRINT,ExprList
+ * IfStmt=IF(LogicExpr)THEN{Stmt}ENDIF
+ * AssignStmt = Var = Expr
+ * ExprList=Expr{,Expr}
+ * Expr = Term {(+|-)Term}
+ * Term = SFactor{(*|/)SFactor}
+ * SFactor = SignFactor|Factor
+ * LogicExpr = Expr (==|<) Expr
+ * Var = IDENT
+ * Sign= +|-
+ * Factor = IDENT|ICONST|RCONST|SCONST| (Expr)
+*/
+
+
+#include <iostream>
+#include <fstream>
+#include <string>
+#include <algorithm>
+#include <iterator>
+#include "parserInt.h"
+
 map<string, bool> defVar;
 map<string, Token> SymTable;
+map<string, Value> TempsResults; //Container of temporary locations of Value objects for results of expressions, variables values and constance
+queue <Value> * ValQue; //declare a pointer variable to a queue of Value objects
 
 namespace Parser {
-	bool pushed_back = false;
-	LexItem	pushed_token;
+    bool pushed_back = false;
+    LexItem	pushed_token;
 
-	static LexItem GetNextToken(istream& in, int& line) {
-		if( pushed_back ) {
-			pushed_back = false;
-			return pushed_token;
-		}
-		return getNextToken(in, line);
-	}
+    static LexItem GetNextToken(istream& in, int& line) {
+        if( pushed_back ) {
+            pushed_back = false;
+            return pushed_token;
+        }
+        return getNextToken(in, line);
+    }
 
-	static void PushBackToken(LexItem & t) {
-		if( pushed_back ) {
-			abort();
-		}
-		pushed_back = true;
-		pushed_token = t;	
-	}
+    static void PushBackToken(LexItem & t) {
+        if( pushed_back ) {
+            abort();
+        }
+        pushed_back = true;
+        pushed_token = t;
+    }
 
 }
+
+static int error_count = 0;
 
 int ErrCount()
 {
@@ -38,9 +67,8 @@ int ErrCount()
 
 void ParseError(int line, string msg)
 {
-	++error_count;
-	cout << line << ": " << msg << endl;
-    
+    ++error_count;
+    cout << line << ": " << msg << endl;
 }
 
 
@@ -180,28 +208,37 @@ bool Stmt(istream& in, int& line) {
 	return status;
 }
 
-//PrintStmt:= print, ExpreList 
-bool PrintStmt(istream& in, int& line) {
-	; 
-	LexItem t;
-	
-	if( (t=Parser::GetNextToken(in, line)) != COMA ) {
-		
-		ParseError(line, "Missing a Comma");
-		return false;
-	}
-	
-	bool ex = ExprList(in, line);
-	
-	if( !ex ) {
-		ParseError(line, "Missing expression after print");
-		return false;
-	}
-	
-	
 
-	return ex;
-}
+// Checks the returned value, if it returns false an error message is printed such as "Missing expression after print" Then the PrintStmt function returns false value
+// Evaluation: the funciton prints out the list of expression's values an returns successfully
+// Proviedes the checking of what the expression lists.
+//PrintStmt:= print, ExprList
+bool PrintStmt(istream& in, int& line) {
+    LexItem t;
+    /*create an empty queue of Value objects.*/
+    ValQue = new queue<Value>;
+    if ((t=Parser::GetNextToken(in, line)) != COMA) {
+        ParseError(line, "Missing a Comma");
+        return false;
+    }
+    bool ex = ExprList(in, line);
+    if (!ex) {
+        ParseError(line, "Missing expression after print");
+        while(!(*ValQue).empty()) {
+            ValQue->pop();
+        }
+        delete ValQue;
+        return false;
+    }
+    // Evaluate: print out the list of expressions' values
+    while (!(*ValQue).empty()) {
+        Value nextVal = (*ValQue).front();
+        cout << nextVal;
+        ValQue->pop();
+    }
+    cout <<endl;
+    return ex;
+}// PrintStmt
 
 //IfStmt:= if (Expr) then {Stmt} END IF
 bool IfStmt(istream& in, int& line) {
@@ -277,11 +314,11 @@ bool ReadStmt(istream& in, int& line)
 	return ex;
 }
 //IdList:= IDENT {,IDENT}
-bool IdList(istream& in, int& line, LexItem type) {
+bool IdList(istream& in, int& line, LexItem & tok) {
 	bool status = false;
 	string identstr;
 	
-	LexItem tok = Parser::GetNextToken(in, line);
+	tok = Parser::GetNextToken(in, line);
 	if(tok == IDENT)
 	{
 		//set IDENT lexeme to the type tok value
@@ -353,12 +390,12 @@ bool VarList(istream& in, int& line)
 }
 
 //Var:= ident
-bool Var(istream& in, int& line)
+bool Var(istream& in, int& line, LexItem & tok)
 {
 	//called only from the AssignStmt function
 	string identstr;
 	
-	LexItem tok = Parser::GetNextToken(in, line);
+	tok = Parser::GetNextToken(in, line);
 	
 	if (tok == IDENT){
 		identstr = tok.GetLexeme();
@@ -443,45 +480,53 @@ bool ExprList(istream& in, int& line) {
 }
 
 //Expr:= Term {(+|-) Term}
-bool Expr(istream& in, int& line) {
-	
-	bool t1 = Term(in, line);
-	LexItem tok;
-	
-	if( !t1 ) {
-		return false;
-	}
-	
-	tok = Parser::GetNextToken(in, line);
-	if(tok.GetToken() == ERR){
-		ParseError(line, "Unrecognized Input Pattern");
-		cout << "(" << tok.GetLexeme() << ")" << endl;
-		return false;
-	}
-	while ( tok == PLUS || tok == MINUS ) 
-	{
-		t1 = Term(in, line);
-		if( !t1 ) 
-		{
-			ParseError(line, "Missing operand after operator");
-			return false;
-		}
-		
-		tok = Parser::GetNextToken(in, line);
-		if(tok.GetToken() == ERR){
-			ParseError(line, "Unrecognized Input Pattern");
-			cout << "(" << tok.GetLexeme() << ")" << endl;
-			return false;
-		}		
-		
-		
-	}
-	Parser::PushBackToken(tok);
-	return true;
-}
+bool Expr(istream& in, int& line, Value & retVal) {
+    Value val1, val2;
+    bool t1 = Term(in, line, val1);
+    LexItem tok;
+    if(!t1) {
+        return false;
+    }
+    retVal = val1;
+
+    tok = Parser::GetNextToken(in, line);
+    if(tok.GetToken() == ERR) {
+        ParseError(line, "Unrecognized Input Pattern");
+        cout << "(" << tok.GetLexeme() << ")" << endl;
+        return false;
+    }
+    while (tok == PLUS || tok == MINUS) {
+        t1 = Term(in, line, val2);
+        if (!t1) {
+            ParseError(line, "Missing operand after operator");
+            return false;
+        }
+        // evaluate the expression for addition or subtraction and update the retVal object.
+        // Check if the operation of PLUS/MINUS is legal for the type of operands
+        if (retVal.GetType() == VCHAR || val2.GetType() == VCHAR) {
+            ParseError(line, "Run-Time Error-Illegal Mixed Type Operands");
+            return false;
+        } else {
+            if (tok == PLUS) {
+                retVal = retVal + val2;
+            }
+            else if(tok == MINUS) {
+                retVal = retVal - val2;
+            }
+        }
+        tok = Parser::GetNextToken(in, line);
+        if (tok.GetToken() == ERR) {
+            ParseError(line, "Unrecognized Input Pattern");
+            cout << "(" << tok.GetLexeme() << ")" << endl;
+            return false;
+        }
+    }
+    Parser::PushBackToken(tok);
+    return true;
+} // Expr
 
 //Term:= SFactor {(*|/) SFactor}
-bool Term(istream& in, int& line) {
+bool Term(istream& in, int& line, Value & retVal) {
 	
 	bool t1 = SFactor(in, line);
 	LexItem tok;
@@ -518,7 +563,7 @@ bool Term(istream& in, int& line) {
 }
 
 //SFactor = Sign Factor | Factor
-bool SFactor(istream& in, int& line)
+bool SFactor(istream& in, int& line, Value & retVal)
 {
 	LexItem t = Parser::GetNextToken(in, line);
 	bool status;
@@ -538,7 +583,7 @@ bool SFactor(istream& in, int& line)
 	return status;
 }
 //LogicExpr = Expr (== | <) Expr
-bool LogicExpr(istream& in, int& line)
+bool LogicExpr(istream& in, int& line, Value & retVal)
 {
 	
 	bool t1 = Expr(in, line);
@@ -569,7 +614,7 @@ bool LogicExpr(istream& in, int& line)
 }
 
 //Factor := ident | iconst | rconst | sconst | (Expr)
-bool Factor(istream& in, int& line, int sign) {
+bool Factor(istream& in, int& line, int sign, Value & retVal) {
 	
 	LexItem tok = Parser::GetNextToken(in, line);
 	

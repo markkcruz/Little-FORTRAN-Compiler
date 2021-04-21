@@ -45,7 +45,8 @@ int main(int argc, char *argv[])
 			in = &file;
 		}
 	}
-    
+    // If prog fails, the program should stop and display a message as unsucessful interpretation and display the number of errors detected.
+    // If it succeeds, the prog stops and displays Successful Execution
     bool status = Prog(*in, lineNumber);
     
     if( !status ){

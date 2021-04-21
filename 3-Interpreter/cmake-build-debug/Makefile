@@ -154,32 +154,32 @@ lex.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles\3_Interpreter.dir\build.make /nologo -$(MAKEFLAGS) CMakeFiles\3_Interpreter.dir\lex.cpp.s
 .PHONY : lex.cpp.s
 
-parserInt.obj: parserInt.cpp.obj
+parse.obj: parse.cpp.obj
 
-.PHONY : parserInt.obj
+.PHONY : parse.obj
 
 # target to build an object file
-parserInt.cpp.obj:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\3_Interpreter.dir\build.make /nologo -$(MAKEFLAGS) CMakeFiles\3_Interpreter.dir\parserInt.cpp.obj
-.PHONY : parserInt.cpp.obj
+parse.cpp.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\3_Interpreter.dir\build.make /nologo -$(MAKEFLAGS) CMakeFiles\3_Interpreter.dir\parse.cpp.obj
+.PHONY : parse.cpp.obj
 
-parserInt.i: parserInt.cpp.i
+parse.i: parse.cpp.i
 
-.PHONY : parserInt.i
+.PHONY : parse.i
 
 # target to preprocess a source file
-parserInt.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\3_Interpreter.dir\build.make /nologo -$(MAKEFLAGS) CMakeFiles\3_Interpreter.dir\parserInt.cpp.i
-.PHONY : parserInt.cpp.i
+parse.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\3_Interpreter.dir\build.make /nologo -$(MAKEFLAGS) CMakeFiles\3_Interpreter.dir\parse.cpp.i
+.PHONY : parse.cpp.i
 
-parserInt.s: parserInt.cpp.s
+parse.s: parse.cpp.s
 
-.PHONY : parserInt.s
+.PHONY : parse.s
 
 # target to generate assembly for a file
-parserInt.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\3_Interpreter.dir\build.make /nologo -$(MAKEFLAGS) CMakeFiles\3_Interpreter.dir\parserInt.cpp.s
-.PHONY : parserInt.cpp.s
+parse.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\3_Interpreter.dir\build.make /nologo -$(MAKEFLAGS) CMakeFiles\3_Interpreter.dir\parse.cpp.s
+.PHONY : parse.cpp.s
 
 prog3.obj: prog3.cpp.obj
 
@@ -247,9 +247,9 @@ help:
 	@echo ... lex.obj
 	@echo ... lex.i
 	@echo ... lex.s
-	@echo ... parserInt.obj
-	@echo ... parserInt.i
-	@echo ... parserInt.s
+	@echo ... parse.obj
+	@echo ... parse.i
+	@echo ... parse.s
 	@echo ... prog3.obj
 	@echo ... prog3.i
 	@echo ... prog3.s
