@@ -40,38 +40,13 @@ public:
     
     bool GetBool() const {if(IsBool()) return Btemp; throw "RUNTIME ERROR: Value not a boolean";}
     
-    void SetType(ValType type){ T = type;}
-    
-    void SetInt(int val){ 
-		if( IsInt() ) {
-    		Itemp = val; 
-			//cout << Itemp<<endl;
-		} 
-		else
-			throw "RUNTIME ERROR: Type not an integer";
-	}
+    void SetInt(int val){ if( IsInt() ) Itemp = val; throw "RUNTIME ERROR: Type not an integer";}
 	
-	void SetReal(float val){ 
-		if( IsReal() ) 
-			Rtemp = val; 
-		else
-			throw "RUNTIME ERROR: Type not a real";
-	}
+	void SetReal(float val){ if( IsReal() ) Rtemp = val; throw "RUNTIME ERROR: Type not a real";}
 	
-	void SetChar(string val){ 
-		if( IsChar() ) 
-			Stemp = val; 
-		else
-			throw "RUNTIME ERROR: Type not a string"; 
-	}
+	void SetChar(string val){ if( IsChar() ) Stemp = val; throw "RUNTIME ERROR: Type not a string"; }
 	
-	void SetBool(bool val){ 
-		if(IsBool()) 
-			Btemp = val; 
-		else
-			throw "RUNTIME ERROR: Type not a boolean";
-	}
-	
+	void SetBool(bool val){ if(IsBool()) Btemp = val; throw "RUNTIME ERROR: Type not a boolean";}
 	
     // add op to this
     Value operator+(const Value& op) const;
