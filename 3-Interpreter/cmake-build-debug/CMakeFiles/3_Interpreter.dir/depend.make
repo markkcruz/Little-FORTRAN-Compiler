@@ -4,7 +4,10 @@
 CMakeFiles\3_Interpreter.dir\lex.cpp.obj: ..\lex.cpp
 CMakeFiles\3_Interpreter.dir\lex.cpp.obj: ..\lex.h
 
-CMakeFiles\3_Interpreter.dir\parse.cpp.obj: ..\parse.cpp
+CMakeFiles\3_Interpreter.dir\parserInt.cpp.obj: ..\lex.h
+CMakeFiles\3_Interpreter.dir\parserInt.cpp.obj: ..\parserInt.cpp
+CMakeFiles\3_Interpreter.dir\parserInt.cpp.obj: ..\parserInt.h
+CMakeFiles\3_Interpreter.dir\parserInt.cpp.obj: ..\val.h
 
 CMakeFiles\3_Interpreter.dir\prog3.cpp.obj: ..\lex.h
 CMakeFiles\3_Interpreter.dir\prog3.cpp.obj: ..\parserInt.h

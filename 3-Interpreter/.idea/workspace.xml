@@ -56,12 +56,12 @@
     </key>
   </component>
   <component name="RunManager">
-    <configuration name="3_Interpreter" type="CMakeRunConfiguration" factoryName="Application" REDIRECT_INPUT="false" ELEVATE="false" PASS_PARENT_ENVS_2="true" PROJECT_NAME="3_Interpreter" TARGET_NAME="3_Interpreter" CONFIG_NAME="Debug" RUN_TARGET_PROJECT_NAME="3_Interpreter" RUN_TARGET_NAME="3_Interpreter">
+    <configuration default="true" type="CLionExternalRunConfiguration" factoryName="Application" REDIRECT_INPUT="false" ELEVATE="false" PASS_PARENT_ENVS_2="true">
       <method v="2">
-        <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
+        <option name="CLION.EXTERNAL.BUILD" enabled="true" />
       </method>
     </configuration>
-    <configuration default="true" type="CMakeRunConfiguration" factoryName="Application" REDIRECT_INPUT="false" ELEVATE="false" PASS_PARENT_ENVS_2="true">
+    <configuration name="3_Interpreter" type="CMakeRunConfiguration" factoryName="Application" PROGRAM_PARAMS="ifstmt" REDIRECT_INPUT="false" ELEVATE="false" PASS_PARENT_ENVS_2="true" PROJECT_NAME="3_Interpreter" TARGET_NAME="3_Interpreter" CONFIG_NAME="Debug" RUN_TARGET_PROJECT_NAME="3_Interpreter" RUN_TARGET_NAME="3_Interpreter">
       <method v="2">
         <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
       </method>
@@ -83,7 +83,10 @@
       <workItem from="1618830040494" duration="6787000" />
       <workItem from="1618844996516" duration="1711000" />
       <workItem from="1618883070207" duration="1190000" />
-      <workItem from="1618972675293" duration="4640000" />
+      <workItem from="1618972675293" duration="7592000" />
+      <workItem from="1619005545760" duration="595000" />
+      <workItem from="1619037168637" duration="6812000" />
+      <workItem from="1619060639257" duration="16933000" />
     </task>
     <servers />
   </component>
@@ -98,7 +101,30 @@
           <line>10</line>
           <option name="timeStamp" value="2" />
         </line-breakpoint>
+        <line-breakpoint enabled="true" type="com.jetbrains.cidr.execution.debugger.OCBreakpointType">
+          <url>file://$PROJECT_DIR$/prog3.cpp</url>
+          <line>50</line>
+          <option name="timeStamp" value="30" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="com.jetbrains.cidr.execution.debugger.OCBreakpointType">
+          <url>file://$PROJECT_DIR$/parserInt.cpp</url>
+          <line>664</line>
+          <option name="timeStamp" value="38" />
+        </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
+    <watches-manager>
+      <configuration name="CMakeRunConfiguration">
+        <watch expression="SymTable" language="ObjectiveC" />
+        <watch expression="ValQue" language="ObjectiveC" />
+        <watch expression="defVar" language="ObjectiveC" />
+        <watch expression="type" language="ObjectiveC" />
+        <watch expression="TempsResults" language="ObjectiveC" />
+        <watch expression="assignment_variable" language="ObjectiveC" />
+        <watch expression="multiplyFlag" language="ObjectiveC" />
+        <watch expression="divideFlag" language="ObjectiveC" />
+        <watch expression="subtractFlag" language="ObjectiveC" />
+      </configuration>
+    </watches-manager>
   </component>
 </project>

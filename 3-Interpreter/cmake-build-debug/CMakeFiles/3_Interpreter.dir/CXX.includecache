@@ -6,14 +6,6 @@
 
 #IncludeRegexTransform: 
 
-C:/Dev C++/CS280 Programming Language Concepts/Little-FORTRAN-Compiler/Little-FORTRAN-Compiler/3-Interpreter/lex.cpp
-cctype
--
-map
--
-lex.h
-C:/Dev C++/CS280 Programming Language Concepts/Little-FORTRAN-Compiler/Little-FORTRAN-Compiler/3-Interpreter/lex.h
-
 C:/Dev C++/CS280 Programming Language Concepts/Little-FORTRAN-Compiler/Little-FORTRAN-Compiler/3-Interpreter/lex.h
 string
 -
@@ -22,31 +14,25 @@ iostream
 map
 -
 
-C:/Dev C++/CS280 Programming Language Concepts/Little-FORTRAN-Compiler/Little-FORTRAN-Compiler/3-Interpreter/parse.cpp
-parse.h
-C:/Dev C++/CS280 Programming Language Concepts/Little-FORTRAN-Compiler/Little-FORTRAN-Compiler/3-Interpreter/parse.h
-
-C:/Dev C++/CS280 Programming Language Concepts/Little-FORTRAN-Compiler/Little-FORTRAN-Compiler/3-Interpreter/parserInt.h
-iostream
--
-lex.h
-C:/Dev C++/CS280 Programming Language Concepts/Little-FORTRAN-Compiler/Little-FORTRAN-Compiler/3-Interpreter/lex.h
-val.h
-C:/Dev C++/CS280 Programming Language Concepts/Little-FORTRAN-Compiler/Little-FORTRAN-Compiler/3-Interpreter/val.h
-
-C:/Dev C++/CS280 Programming Language Concepts/Little-FORTRAN-Compiler/Little-FORTRAN-Compiler/3-Interpreter/prog3.cpp
+C:/Dev C++/CS280 Programming Language Concepts/Little-FORTRAN-Compiler/Little-FORTRAN-Compiler/3-Interpreter/parserInt.cpp
 iostream
 -
 fstream
 -
-lex.h
-C:/Dev C++/CS280 Programming Language Concepts/Little-FORTRAN-Compiler/Little-FORTRAN-Compiler/3-Interpreter/lex.h
-val.h
-C:/Dev C++/CS280 Programming Language Concepts/Little-FORTRAN-Compiler/Little-FORTRAN-Compiler/3-Interpreter/val.h
+string
+-
+algorithm
+-
+iterator
+-
 parserInt.h
 C:/Dev C++/CS280 Programming Language Concepts/Little-FORTRAN-Compiler/Little-FORTRAN-Compiler/3-Interpreter/parserInt.h
 
-C:/Dev C++/CS280 Programming Language Concepts/Little-FORTRAN-Compiler/Little-FORTRAN-Compiler/3-Interpreter/val.cpp
+C:/Dev C++/CS280 Programming Language Concepts/Little-FORTRAN-Compiler/Little-FORTRAN-Compiler/3-Interpreter/parserInt.h
+iostream
+-
+lex.h
+C:/Dev C++/CS280 Programming Language Concepts/Little-FORTRAN-Compiler/Little-FORTRAN-Compiler/3-Interpreter/lex.h
 val.h
 C:/Dev C++/CS280 Programming Language Concepts/Little-FORTRAN-Compiler/Little-FORTRAN-Compiler/3-Interpreter/val.h
 

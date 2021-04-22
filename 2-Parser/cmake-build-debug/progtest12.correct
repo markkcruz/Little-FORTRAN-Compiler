@@ -1,0 +1,25 @@
+4: Variable Redefinition
+4: Missing END of Program
+Unsuccessful Parsing
+Number of Syntax Errors 2
+
+Prog = PROGRAM IDENT {Decl} {Decl}
+Prog = PROGRAM IDENT Decl = (INTEGER|REAL|CHAR):IdList {Decl}
+Prog = PROGRAM IDENT Decl = REAL:IdList {Decl}
+Prog = PROGRAM IDENT Decl = REAL:IDENT{,IDENT} {Decl}
+Prog = PROGRAM IDENT Decl = REAL:r, a, p, b {Decl}
+Prog = PROGRAM IDENT Decl = REAL:r, a, p, b (INTEGER|REAL|CHAR):IdList
+Prog = PROGRAM IDENT Decl = REAL:r, a, p, b CHAR:IdList
+Prog = PROGRAM IDENT Decl = REAL:r, a, p, b CHAR:p   <-- ERROR, DECLARTION
+
+Prog = PROGRAM IDENT Decl = REAL:r, a, p, b CHAR:p   <-- ERROR, DECLARTION
+Error in Var : Variable Redefinition
+return to IDLIST with no error, return to DECL with no error,
+
+ return to PROG with | Output error in prog
+
+
+
+
+
+{Stmt} END PROGRAM IDENT

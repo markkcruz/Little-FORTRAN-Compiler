@@ -1,0 +1,29 @@
+PROGRAM circle
+    !Program with no errors
+	!Variable declarations
+	INTEGER : r, a, p, b 	
+	CHAR : str1, str2
+	!Read data
+	PRINT , "Please the two radius values circle"
+	READ, r, b
+	!Display the results
+	PRINT , "The output results are " , a+4, p*2, -b
+END PROGRAM circle
+
+Prog = PROGRAM IDENT {Decl}
+
+{Stmt} END PROGRAM IDENT
+
+PrintStmt=PRINT,ExprList {Stmt} END PROGRAM IDENT
+
+PrintStmt=PRINT, Expr {Stmt} END PROGRAM IDENT
+
+PrintStmt=PRINT, Term {Stmt} END PROGRAM IDENT
+
+PrintStmt=PRINT, SFactor {Stmt} END PROGRAM IDENT
+
+PrintStmt=PRINT, Factor {Stmt} END PROGRAM IDENT
+
+PrintStmt=PRINT, SCONST {Stmt} END PROGRAM IDENT
+
+PrintStmt=PRINT, SCONST ReadStmt END PROGRAM IDENT

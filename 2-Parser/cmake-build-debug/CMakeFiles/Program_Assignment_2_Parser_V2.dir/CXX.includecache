@@ -1,0 +1,48 @@
+#IncludeRegexLine: ^[ 	]*[#%][ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+C:/Dev C++/CS280 Programming Language Concepts/Program Assignment 2 Parser/lex.h
+string
+-
+iostream
+-
+map
+-
+
+C:/Dev C++/CS280 Programming Language Concepts/Program Assignment 2 Parser/parse.cpp
+iostream
+-
+fstream
+-
+string
+-
+algorithm
+-
+iterator
+-
+lex.h
+C:/Dev C++/CS280 Programming Language Concepts/Program Assignment 2 Parser/lex.h
+parse.h
+C:/Dev C++/CS280 Programming Language Concepts/Program Assignment 2 Parser/parse.h
+
+C:/Dev C++/CS280 Programming Language Concepts/Program Assignment 2 Parser/parse.h
+iostream
+-
+lex.h
+C:/Dev C++/CS280 Programming Language Concepts/Program Assignment 2 Parser/lex.h
+
+C:/Dev C++/CS280 Programming Language Concepts/Program Assignment 2 Parser/prog2.cpp
+iostream
+-
+fstream
+-
+parse.h
+C:/Dev C++/CS280 Programming Language Concepts/Program Assignment 2 Parser/parse.h
+lex.h
+C:/Dev C++/CS280 Programming Language Concepts/Program Assignment 2 Parser/lex.h
+

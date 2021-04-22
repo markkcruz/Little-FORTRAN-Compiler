@@ -1,0 +1,16 @@
+Successful Parsing
+
+a = (3.14) * r * r
+AssignStmt(START) = Var = Expr
+Var = Expr
+IDENT = Expr
+a = Expr
+a = Term
+a = SFactor{(*|/)SFactor}
+a = SFactor * SFactor * SFactor
+a = Factor * Factor * Factor
+
+if factor = (
+    then get next token?
+
+

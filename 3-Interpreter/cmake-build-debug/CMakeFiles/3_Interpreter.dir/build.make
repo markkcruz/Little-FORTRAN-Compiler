@@ -118,23 +118,23 @@ CMakeFiles\3_Interpreter.dir\val.cpp.s: cmake_force
  /nologo /TP $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) /FoNUL /FAs /FaCMakeFiles\3_Interpreter.dir\val.cpp.s /c "C:\Dev C++\CS280 Programming Language Concepts\Little-FORTRAN-Compiler\Little-FORTRAN-Compiler\3-Interpreter\val.cpp"
 <<
 
-CMakeFiles\3_Interpreter.dir\parse.cpp.obj: CMakeFiles\3_Interpreter.dir\flags.make
-CMakeFiles\3_Interpreter.dir\parse.cpp.obj: ..\parse.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir="C:\Dev C++\CS280 Programming Language Concepts\Little-FORTRAN-Compiler\Little-FORTRAN-Compiler\3-Interpreter\cmake-build-debug\CMakeFiles" --progress-num=$(CMAKE_PROGRESS_4) "Building CXX object CMakeFiles/3_Interpreter.dir/parse.cpp.obj"
+CMakeFiles\3_Interpreter.dir\parserInt.cpp.obj: CMakeFiles\3_Interpreter.dir\flags.make
+CMakeFiles\3_Interpreter.dir\parserInt.cpp.obj: ..\parserInt.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir="C:\Dev C++\CS280 Programming Language Concepts\Little-FORTRAN-Compiler\Little-FORTRAN-Compiler\3-Interpreter\cmake-build-debug\CMakeFiles" --progress-num=$(CMAKE_PROGRESS_4) "Building CXX object CMakeFiles/3_Interpreter.dir/parserInt.cpp.obj"
 	C:\PROGRA~2\MICROS~4\2019\COMMUN~1\VC\Tools\MSVC\1423~1.281\bin\Hostx86\x86\cl.exe @<<
- /nologo /TP $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) /FoCMakeFiles\3_Interpreter.dir\parse.cpp.obj /FdCMakeFiles\3_Interpreter.dir\ /FS -c "C:\Dev C++\CS280 Programming Language Concepts\Little-FORTRAN-Compiler\Little-FORTRAN-Compiler\3-Interpreter\parse.cpp"
+ /nologo /TP $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) /FoCMakeFiles\3_Interpreter.dir\parserInt.cpp.obj /FdCMakeFiles\3_Interpreter.dir\ /FS -c "C:\Dev C++\CS280 Programming Language Concepts\Little-FORTRAN-Compiler\Little-FORTRAN-Compiler\3-Interpreter\parserInt.cpp"
 <<
 
-CMakeFiles\3_Interpreter.dir\parse.cpp.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/3_Interpreter.dir/parse.cpp.i"
-	C:\PROGRA~2\MICROS~4\2019\COMMUN~1\VC\Tools\MSVC\1423~1.281\bin\Hostx86\x86\cl.exe > CMakeFiles\3_Interpreter.dir\parse.cpp.i @<<
- /nologo /TP $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E "C:\Dev C++\CS280 Programming Language Concepts\Little-FORTRAN-Compiler\Little-FORTRAN-Compiler\3-Interpreter\parse.cpp"
+CMakeFiles\3_Interpreter.dir\parserInt.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/3_Interpreter.dir/parserInt.cpp.i"
+	C:\PROGRA~2\MICROS~4\2019\COMMUN~1\VC\Tools\MSVC\1423~1.281\bin\Hostx86\x86\cl.exe > CMakeFiles\3_Interpreter.dir\parserInt.cpp.i @<<
+ /nologo /TP $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E "C:\Dev C++\CS280 Programming Language Concepts\Little-FORTRAN-Compiler\Little-FORTRAN-Compiler\3-Interpreter\parserInt.cpp"
 <<
 
-CMakeFiles\3_Interpreter.dir\parse.cpp.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/3_Interpreter.dir/parse.cpp.s"
+CMakeFiles\3_Interpreter.dir\parserInt.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/3_Interpreter.dir/parserInt.cpp.s"
 	C:\PROGRA~2\MICROS~4\2019\COMMUN~1\VC\Tools\MSVC\1423~1.281\bin\Hostx86\x86\cl.exe @<<
- /nologo /TP $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) /FoNUL /FAs /FaCMakeFiles\3_Interpreter.dir\parse.cpp.s /c "C:\Dev C++\CS280 Programming Language Concepts\Little-FORTRAN-Compiler\Little-FORTRAN-Compiler\3-Interpreter\parse.cpp"
+ /nologo /TP $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) /FoNUL /FAs /FaCMakeFiles\3_Interpreter.dir\parserInt.cpp.s /c "C:\Dev C++\CS280 Programming Language Concepts\Little-FORTRAN-Compiler\Little-FORTRAN-Compiler\3-Interpreter\parserInt.cpp"
 <<
 
 # Object files for target 3_Interpreter
@@ -142,7 +142,7 @@ CMakeFiles\3_Interpreter.dir\parse.cpp.s: cmake_force
 "CMakeFiles\3_Interpreter.dir\prog3.cpp.obj" \
 "CMakeFiles\3_Interpreter.dir\lex.cpp.obj" \
 "CMakeFiles\3_Interpreter.dir\val.cpp.obj" \
-"CMakeFiles\3_Interpreter.dir\parse.cpp.obj"
+"CMakeFiles\3_Interpreter.dir\parserInt.cpp.obj"
 
 # External object files for target 3_Interpreter
 3_Interpreter_EXTERNAL_OBJECTS =
@@ -150,7 +150,7 @@ CMakeFiles\3_Interpreter.dir\parse.cpp.s: cmake_force
 3_Interpreter.exe: CMakeFiles\3_Interpreter.dir\prog3.cpp.obj
 3_Interpreter.exe: CMakeFiles\3_Interpreter.dir\lex.cpp.obj
 3_Interpreter.exe: CMakeFiles\3_Interpreter.dir\val.cpp.obj
-3_Interpreter.exe: CMakeFiles\3_Interpreter.dir\parse.cpp.obj
+3_Interpreter.exe: CMakeFiles\3_Interpreter.dir\parserInt.cpp.obj
 3_Interpreter.exe: CMakeFiles\3_Interpreter.dir\build.make
 3_Interpreter.exe: CMakeFiles\3_Interpreter.dir\objects1.rsp
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir="C:\Dev C++\CS280 Programming Language Concepts\Little-FORTRAN-Compiler\Little-FORTRAN-Compiler\3-Interpreter\cmake-build-debug\CMakeFiles" --progress-num=$(CMAKE_PROGRESS_5) "Linking CXX executable 3_Interpreter.exe"

@@ -14,7 +14,7 @@ enum ValType { VINT, VREAL, VCHAR, VBOOL, VERR };
 // Is of a certain type. So int, float, string bool.
 class Value {
     ValType	T;
-     bool    Btemp;
+    bool    Btemp;
 	int		Itemp;
 	float   Rtemp;
     string	Stemp;
