@@ -49,6 +49,7 @@
     <property name="node.js.path.for.package.tslint" value="project" />
     <property name="node.js.selected.package.eslint" value="(autodetect)" />
     <property name="node.js.selected.package.tslint" value="(autodetect)" />
+    <property name="nodejs_package_manager_path" value="npm" />
   </component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
@@ -56,12 +57,12 @@
     </key>
   </component>
   <component name="RunManager">
-    <configuration default="true" type="CLionExternalRunConfiguration" factoryName="Application" REDIRECT_INPUT="false" ELEVATE="false" PASS_PARENT_ENVS_2="true">
+    <configuration name="3_Interpreter" type="CMakeRunConfiguration" factoryName="Application" PROGRAM_PARAMS="progname" REDIRECT_INPUT="false" ELEVATE="false" PASS_PARENT_ENVS_2="true" PROJECT_NAME="3_Interpreter" TARGET_NAME="3_Interpreter" CONFIG_NAME="Debug" RUN_TARGET_PROJECT_NAME="3_Interpreter" RUN_TARGET_NAME="3_Interpreter">
       <method v="2">
-        <option name="CLION.EXTERNAL.BUILD" enabled="true" />
+        <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
       </method>
     </configuration>
-    <configuration name="3_Interpreter" type="CMakeRunConfiguration" factoryName="Application" PROGRAM_PARAMS="ifstmt" REDIRECT_INPUT="false" ELEVATE="false" PASS_PARENT_ENVS_2="true" PROJECT_NAME="3_Interpreter" TARGET_NAME="3_Interpreter" CONFIG_NAME="Debug" RUN_TARGET_PROJECT_NAME="3_Interpreter" RUN_TARGET_NAME="3_Interpreter">
+    <configuration default="true" type="CMakeRunConfiguration" factoryName="Application" REDIRECT_INPUT="false" ELEVATE="false" PASS_PARENT_ENVS_2="true">
       <method v="2">
         <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
       </method>
@@ -86,7 +87,8 @@
       <workItem from="1618972675293" duration="7592000" />
       <workItem from="1619005545760" duration="595000" />
       <workItem from="1619037168637" duration="6812000" />
-      <workItem from="1619060639257" duration="16933000" />
+      <workItem from="1619060639257" duration="19655000" />
+      <workItem from="1619084011350" duration="6783000" />
     </task>
     <servers />
   </component>
@@ -102,14 +104,19 @@
           <option name="timeStamp" value="2" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="com.jetbrains.cidr.execution.debugger.OCBreakpointType">
-          <url>file://$PROJECT_DIR$/prog3.cpp</url>
-          <line>50</line>
-          <option name="timeStamp" value="30" />
+          <url>file://$PROJECT_DIR$/parserInt.cpp</url>
+          <line>524</line>
+          <option name="timeStamp" value="44" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="com.jetbrains.cidr.execution.debugger.OCBreakpointType">
           <url>file://$PROJECT_DIR$/parserInt.cpp</url>
-          <line>664</line>
-          <option name="timeStamp" value="38" />
+          <line>482</line>
+          <option name="timeStamp" value="48" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="com.jetbrains.cidr.execution.debugger.OCBreakpointType">
+          <url>file://$PROJECT_DIR$/parserInt.cpp</url>
+          <line>569</line>
+          <option name="timeStamp" value="49" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
@@ -124,6 +131,7 @@
         <watch expression="multiplyFlag" language="ObjectiveC" />
         <watch expression="divideFlag" language="ObjectiveC" />
         <watch expression="subtractFlag" language="ObjectiveC" />
+        <watch expression="tok" language="ObjectiveC" />
       </configuration>
     </watches-manager>
   </component>

@@ -92,11 +92,14 @@ bool Prog(istream& in, int& line)
 {
 	bool dl = false, sl = false;
 	LexItem tok = Parser::GetNextToken(in, line);
-	
-	
+
+	// Check if the beginning program name is the same as the ending one.
+    LexItem programName;
+
 	if (tok.GetToken() == PROGRAM) {
 		tok = Parser::GetNextToken(in, line);
 		if (tok.GetToken() == IDENT) {
+            programName = tok; // Saving program name
 			dl = Decl(in, line);
 			if( !dl  )
 			{
@@ -108,35 +111,41 @@ bool Prog(istream& in, int& line)
 			{
 				ParseError(line, "Incorrect Statement in program");
 				return false;
-			}	
+			}
 			tok = Parser::GetNextToken(in, line);
-			
+
 			if (tok.GetToken() == END) {
 				tok = Parser::GetNextToken(in, line);
-				
+
 				if (tok.GetToken() == PROGRAM) {
 					tok = Parser::GetNextToken(in, line);
-					
+
 					if (tok.GetToken() == IDENT) {
-						return true;
+					    // Check if the program name declared at the beginning is the same as this ident
+					    if (tok.GetLexeme() == programName.GetLexeme()) {
+                            return true;
+					    } else { // parseerror, not the same program name
+					        ParseError(line, "Incorrect Program Name");
+					        return false;
+					    }
 					}
 					else
 					{
 						ParseError(line, "Missing Program Name");
 						return false;
-					}	
+					}
 				}
 				else
 				{
 					ParseError(line, "Missing PROGRAM at the End");
 					return false;
-				}	
+				}
 			}
 			else
 			{
 				ParseError(line, "Missing END of Program");
 				return false;
-			}	
+			}
 		}
 	}
 	else if(tok.GetToken() == ERR){
@@ -144,18 +153,18 @@ bool Prog(istream& in, int& line)
 		cout << "(" << tok.GetLexeme() << ")" << endl;
 		return false;
 	}
-	
+
 	return false;
 }
 
-//Decl = Type : VarList 
+//Decl = Type : VarList
 //Type = INTEGER | REAL | CHAR
 bool Decl(istream& in, int& line) {
 	bool status = false;
 	LexItem tok;
-	
+
 	LexItem t = Parser::GetNextToken(in, line);
-	
+
 	if(t == INTEGER || t == REAL || t == CHAR) {
 		tok = t;
 		tok = Parser::GetNextToken(in, line);
@@ -173,7 +182,7 @@ bool Decl(istream& in, int& line) {
 			return false;
 		}
 	}
-		
+
 	Parser::PushBackToken(t);
 	return true;
 }
@@ -182,7 +191,7 @@ bool Decl(istream& in, int& line) {
 //Stmt = AssigStmt | IfStmt | PrintStmt | ReadStmt
 bool Stmt(istream& in, int& line) {
 	bool status;
-	
+
 	LexItem t = Parser::GetNextToken(in, line);
 
     // Store the variable that is an Ident so we can assign the value after expression is done.
@@ -193,7 +202,7 @@ bool Stmt(istream& in, int& line) {
 
 	case PRINT:
 		status = PrintStmt(in, line);
-		
+
 		if(status)
 			status = Stmt(in, line);
 		break;
@@ -220,10 +229,10 @@ bool Stmt(istream& in, int& line) {
 		if(status)
 			status = Stmt(in, line);
 		break;
-		
+
 	case READ:
 		status = ReadStmt(in, line);
-		
+
 		if(status)
 			status = Stmt(in, line);
 		break;
@@ -270,75 +279,90 @@ bool PrintStmt(istream& in, int& line) {
 
 //IfStmt:= if (Expr) then {Stmt} END IF
 bool IfStmt(istream& in, int& line) {
-	bool ex=false ; 
+	bool ex=false ;
 	LexItem t;
-	
+
 	if( (t=Parser::GetNextToken(in, line)) != LPAREN ) {
-		
+
 		ParseError(line, "Missing Left Parenthesis");
 		return false;
 	}
 	// Declare a Value type token to move down the chain of command
-	Value value;
-	ex = LogicExpr(in, line, value);
+	Value retVal; // The boolean value that will indicate whether or not to output the statements yo
+	ex = LogicExpr(in, line, retVal);
 	if( !ex ) {
 		ParseError(line, "Missing if statement Logic Expression");
 		return false;
 	}
 
 	if((t=Parser::GetNextToken(in, line)) != RPAREN ) {
-		
+
 		ParseError(line, "Missing Right Parenthesis");
 		return false;
 	}
-	
+
 	if((t=Parser::GetNextToken(in, line)) != THEN ) {
-		
+
 		ParseError(line, "Missing THEN");
 		return false;
 	}
 
-	bool st = Stmt(in, line);
+	// if the retVal bool is true, then do these statements. Else, skip until we hit the end token.
+    bool st = true;
+	if (retVal.GetBool()){
+	    // true, so do the statements
+        bool st = Stmt(in, line);
+    } else {
+	    // Kill the tokens until we hit END.
+        while((t=Parser::GetNextToken(in, line)) != END ){
+            // do nothing lol
+        }
+        Parser::PushBackToken(t);
+	}
+
+
+
+
 	if( !st ) {
 		ParseError(line, "Missing statement for IF");
 		return false;
 	}
-	
-	
-	
+
+
+
 	if((t=Parser::GetNextToken(in, line)) != END ) {
-		
+
 		ParseError(line, "Missing END of IF");
 		return false;
 	}
 	if((t=Parser::GetNextToken(in, line)) != IF ) {
-		
+
 		ParseError(line, "Missing IF at End of IF statement");
 		return false;
 	}
-	
+
 	return true;
 }
 
 bool ReadStmt(istream& in, int& line)
 {
-	
+
 	LexItem t;
-	
+
 	if( (t=Parser::GetNextToken(in, line)) != COMA ) {
-		
+
 		ParseError(line, "Missing a Comma");
 		return false;
 	}
-	
+
 	bool ex = VarList(in, line);
-	
+
 	if( !ex ) {
 		ParseError(line, "Missing Variable after Read Statement");
 		return false;
 	}
-	
-	
+
+
 
 	return ex;
 }
@@ -347,7 +371,7 @@ bool ReadStmt(istream& in, int& line)
 
 //IdList:= IDENT {,IDENT}
 bool IdList(istream& in, int& line, LexItem & tok) {
-    Token type = tok.GetToken();
+    LexItem type = tok;
     bool status = false;
 	string identstr;
 
@@ -360,28 +384,28 @@ bool IdList(istream& in, int& line, LexItem & tok) {
 		if ((defVar.find(identstr) == defVar.end()))
 		{
 			defVar[identstr] = true;
-			SymTable[identstr] = type;
+			SymTable[identstr] = type.GetToken();
 
 			// TempsResults map Insertion ??? Maybe
 
-		}	
+		}
 		else
 		{
 			ParseError(line, "Variable Redefinition");
 			return false;
 		}
-		
+
 	}
 	else
 	{
 		ParseError(line, "Missing Variable");
 		return false;
 	}
-	
+
 	LexItem token = Parser::GetNextToken(in, line);
-	
+
 	if (token == COMA) {
-		status = IdList(in, line, tok);
+		status = IdList(in, line, type);
 	}
 	else if(token.GetToken() == ERR){
 		ParseError(line, "Unrecognized Input Pattern");
@@ -404,15 +428,15 @@ bool VarList(istream& in, int& line)
 	LexItem placeHolderTok;
 
 	status = Var(in, line, placeHolderTok);
-	
+
 	if(!status)
 	{
 		ParseError(line, "Missing Variable");
 		return false;
 	}
-	
+
 	LexItem tok = Parser::GetNextToken(in, line);
-	
+
 	if (tok == COMA) {
 		status = VarList(in, line);
 	}
@@ -433,17 +457,17 @@ bool Var(istream& in, int& line, LexItem & tok)
 {
 	//called only from the AssignStmt function
 	string identstr;
-	
+
 	tok = Parser::GetNextToken(in, line);
-	
+
 	if (tok == IDENT){
 		identstr = tok.GetLexeme();
 		if (!(defVar.find(identstr)->second))
 		{
 			ParseError(line, "Undeclared Variable");
 			return false;
-			
-		}	
+
+		}
 		return true;
 	}
 	else if(tok.GetToken() == ERR){
@@ -456,7 +480,7 @@ bool Var(istream& in, int& line, LexItem & tok)
 
 //AssignStmt:= Var = Expr
 bool AssignStmt(istream& in, int& line) {
-	
+
 	bool varstatus = false, status = false;
 	LexItem t;
 
@@ -465,11 +489,11 @@ bool AssignStmt(istream& in, int& line) {
     Value value;
 
 	varstatus = Var( in, line, placeHolderTok);
-	
-	
+
+
 	if (varstatus){
 		t = Parser::GetNextToken(in, line);
-		
+
 		if (t == ASSOP){
             // Declare a Value type token to move down the chain of command
 
@@ -478,7 +502,7 @@ bool AssignStmt(istream& in, int& line) {
 				ParseError(line, "Missing Expression in Assignment Statment");
 				return status;
 			}
-			
+
 		}
 		else if(t.GetToken() == ERR){
 			ParseError(line, "Unrecognized Input Pattern");
@@ -495,10 +519,19 @@ bool AssignStmt(istream& in, int& line) {
 		return false;
 	}
 
-	// Now insert the value of this assignment statement into the variable that called this assignment statement. "t.GetLexeme()"
+	// truncating now.
 
+    //cout << SymTable[assignment_variable.GetLexeme()];
+	// Then we must truncate the value.
+    if ((SymTable[assignment_variable.GetLexeme()] == INTEGER) && (value.IsReal())) {
+        Value newValue = static_cast<int>(value.GetReal());
+        value = newValue;
+    }
+
+
+	// Now insert the value of this assignment statement into the variable that called this assignment statement. "t.GetLexeme()"
     TempsResults.insert(std::pair<string, Value>(assignment_variable.GetLexeme(),value));
-	return status;	
+	return status;
 }
 
 //ExprList:= Expr {,Expr}
@@ -514,9 +547,9 @@ bool ExprList(istream& in, int& line) {
 	}
 	// Push that "thing to print" into the queue yo
 	ValQue->push(value);
-	
+
 	LexItem tok = Parser::GetNextToken(in, line);
-	
+
 	if (tok == COMA) {
 		status = ExprList(in, line);
 	}
@@ -583,7 +616,7 @@ bool Term(istream& in, int& line, Value & retVal) {
     Value val1, val2;
 	bool t1 = SFactor(in, line, val1);
 	LexItem tok;
-	
+
 	if( !t1 ) {
 		return false;
 	}
@@ -613,6 +646,16 @@ bool Term(istream& in, int& line, Value & retVal) {
 			ParseError(line, "Missing operand after operator");
 			return false;
 		}
+
+		// Check if val2 is zero. If it is, return a ParseError.
+
+		if (val2.IsInt()) {
+            if (val2.GetInt() == 0) {
+                ParseError(line, "Run-Time Error-Illegal Division by Zero");
+                return false;
+            }
+        }
+
         // evaluate the expression for addition or subtraction and update the retVal object.
         // Check if the operation of PLUS/MINUS is legal for the type of operands
         if (retVal.GetType() == VCHAR || val2.GetType() == VCHAR) {
@@ -634,7 +677,7 @@ bool Term(istream& in, int& line, Value & retVal) {
 			cout << "(" << tok.GetLexeme() << ")" << endl;
 			return false;
 		}
-		
+
 	}
 	Parser::PushBackToken(tok);
 	return true;
@@ -656,35 +699,53 @@ bool SFactor(istream& in, int& line, Value & retVal)
 	}
 	else
 		Parser::PushBackToken(t);
-		
+
 	status = Factor(in, line, sign, retVal);
 	return status;
 }
 //LogicExpr = Expr (== | <) Expr
 bool LogicExpr(istream& in, int& line, Value & retVal)
 {
-	
-	bool t1 = Expr(in, line, retVal);
+    Value val1, val2;
+	bool t1 = Expr(in, line, val1);
 	LexItem tok;
-	
+
 	if( !t1 ) {
 		return false;
 	}
-	
+    retVal = val1;
+
 	tok = Parser::GetNextToken(in, line);
 	if(tok.GetToken() == ERR){
 		ParseError(line, "Unrecognized Input Pattern");
 		cout << "(" << tok.GetLexeme() << ")" << endl;
 		return false;
 	}
-	if ( tok == LTHAN  || tok == EQUAL) 
+	if ( tok == LTHAN  || tok == EQUAL)
 	{
-		t1 = Expr(in, line, retVal);
-		if( !t1 ) 
+		t1 = Expr(in, line, val2);
+		if( !t1 )
 		{
 			ParseError(line, "Missing expression after relational operator");
 			return false;
 		}
+
+		// Check if val1 and val2 are the same type. If they are not, then output a parseerror. (test case invlogexpr)
+		if (!((val1.IsReal() && (val2.IsReal()) || (val1.IsChar() && (val2.IsChar()) || (val1.IsInt()&& (val2.IsInt())))))) {
+		    ParseError(line, "Run-Time Error-Illegal Mixed Type operation");
+		    return false;
+		}
+
+		// Do < boolean
+		if ( tok == LTHAN) {
+            Value booleanRetVal = val1 < val2;
+            retVal = booleanRetVal;
+		} else { // (tok == EQUAL)
+		    // Do == boolean
+            Value booleanRetVal = val1 == val2;
+		    retVal = booleanRetVal;
+		}
+
 		return true;
 	}
 	Parser::PushBackToken(tok);
@@ -693,7 +754,7 @@ bool LogicExpr(istream& in, int& line, Value & retVal)
 
 //Factor := ident | iconst | rconst | sconst | (Expr)
 bool Factor(istream& in, int& line, int sign, Value & retVal) {
-	
+
 	LexItem tok = Parser::GetNextToken(in, line);
 
     // Check if retVal is not an error (Then theres something in it)
@@ -745,18 +806,21 @@ bool Factor(istream& in, int& line, int sign, Value & retVal) {
 
 
 
-		//check if the var is defined 
+		//check if the var is defined
 		string lexeme = tok.GetLexeme();
 		if (!(defVar.find(lexeme)->second))
 		{
 			ParseError(line, "Undefined Variable");
-			return false;	
+			return false;
 		}
 		return true;
 	}
 	else if( tok == ICONST ) {
 		Value value(stoi(tok.GetLexeme()));
 		retVal = value;
+        if (sign != 0) {
+            retVal.SetInt(retVal.GetInt() * sign);
+        }
 		return true;
 	}
 	else if( tok == SCONST ) {
@@ -767,6 +831,9 @@ bool Factor(istream& in, int& line, int sign, Value & retVal) {
 	else if( tok == RCONST ) {
         Value value(stof(tok.GetLexeme()));
         retVal = value;
+        if (sign != 0) {
+            retVal.SetReal(retVal.GetReal() * sign);
+        }
         return true;
 	}
 	else if( tok == LPAREN ) {
