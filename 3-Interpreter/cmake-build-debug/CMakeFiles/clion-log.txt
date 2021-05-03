@@ -1,4 +1,16 @@
-"C:\Program Files\JetBrains\CLion 2020.3.2\bin\cmake\win\bin\cmake.exe" -DCMAKE_BUILD_TYPE=Debug -G "CodeBlocks - NMake Makefiles" "C:\Dev C++\CS280 Programming Language Concepts\Little-FORTRAN-Compiler\Little-FORTRAN-Compiler\3-Interpreter"
--- Configuring done
--- Generating done
--- Build files have been written to: C:/Dev C++/CS280 Programming Language Concepts/Little-FORTRAN-Compiler/Little-FORTRAN-Compiler/3-Interpreter/cmake-build-debug
+Visual Studio not found at: C:\Program Files (x86)\Microsoft Visual Studio\2019\Community Configure Disable profile
+
+Cannot get compiler information:
+	Cannot load Visual C++ environment from C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Auxiliary\Build\vcvarsall.bat:
+	command [cmd.exe, /c, "call "C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Auxiliary\Build\vcvarsall.bat" x86 && "C:\Program Files\JetBrains\CLion 2020.3.2\jbr\bin\java" -cp "C:\Program Files\JetBrains\CLion 2020.3.2\lib\util.jar" com.intellij.util.ReadEnv C:\Users\Jinrain\AppData\Local\Temp\intellij-cmd-env.11562377445879765355.tmp || exit /B %ERRORLEVEL%"]
+		exit code:0 text:0 out:**********************************************************************
+	** Visual Studio 2019 Developer Command Prompt v16.3.2
+	** Copyright (c) 2019 Microsoft Corporation
+	**********************************************************************
+	[vcvarsall.bat] Environment initialized for: 'x86'
+	OpenJDK 64-Bit Server VM warning: INFO: os::commit_memory(0x0000000601200000, 536870912, 0) failed; error='The paging file is too small for this operation to complete' (DOS error/errno=1455)
+	#
+	# There is insufficient memory for the Java Runtime Environment to continue.
+	# Native memory allocation (mmap) failed to map 536870912 bytes for Failed to commit area from 0x0000000601200000 to 0x0000000621200000 of length 536870912.
+	# An error report file with more information is saved as:
+	# C:\Users\Jinrain\AppData\Local\Temp\\hs_err_pid16512.log

@@ -124,7 +124,7 @@ bool Prog(istream& in, int& line)
 					    // Check if the program name declared at the beginning is the same as this ident
 					    if (tok.GetLexeme() == programName.GetLexeme()) {
                             return true;
-					    } else { // parseerror, not the same program name
+					    } else { // parseerror, not the same program nameS
 					        ParseError(line, "Incorrect Program Name");
 					        return false;
 					    }

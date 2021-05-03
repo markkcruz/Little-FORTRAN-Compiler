@@ -43,6 +43,7 @@
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="cf.first.check.clang-format" value="false" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.detected.package.tslint" value="true" />
     <property name="node.js.path.for.package.eslint" value="project" />
@@ -62,16 +63,6 @@
         <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
       </method>
     </configuration>
-    <configuration default="true" type="CMakeRunConfiguration" factoryName="Application" REDIRECT_INPUT="false" ELEVATE="false" PASS_PARENT_ENVS_2="true">
-      <method v="2">
-        <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
-      </method>
-    </configuration>
-    <configuration default="true" type="GradleAppRunConfiguration" factoryName="Application" REDIRECT_INPUT="false" ELEVATE="false" PASS_PARENT_ENVS_2="true">
-      <method v="2">
-        <option name="com.jetbrains.cidr.cpp.gradle.execution.GradleNativeBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
-      </method>
-    </configuration>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
@@ -89,6 +80,17 @@
       <workItem from="1619037168637" duration="6812000" />
       <workItem from="1619060639257" duration="19655000" />
       <workItem from="1619084011350" duration="6783000" />
+      <workItem from="1619105682320" duration="1252000" />
+      <workItem from="1619131145839" duration="128000" />
+      <workItem from="1619390296817" duration="3950000" />
+      <workItem from="1619454323743" duration="115000" />
+      <workItem from="1619506632510" duration="86000" />
+      <workItem from="1619629772003" duration="168000" />
+      <workItem from="1619630234956" duration="623000" />
+      <workItem from="1619666001938" duration="586000" />
+      <workItem from="1619672457914" duration="41000" />
+      <workItem from="1619673016179" duration="3687000" />
+      <workItem from="1619731313963" duration="1856000" />
     </task>
     <servers />
   </component>
@@ -104,19 +106,19 @@
           <option name="timeStamp" value="2" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="com.jetbrains.cidr.execution.debugger.OCBreakpointType">
-          <url>file://$PROJECT_DIR$/parserInt.cpp</url>
-          <line>524</line>
-          <option name="timeStamp" value="44" />
+          <url>file://$PROJECT_DIR$/prog3.cpp</url>
+          <line>50</line>
+          <option name="timeStamp" value="50" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="com.jetbrains.cidr.execution.debugger.OCBreakpointType">
           <url>file://$PROJECT_DIR$/parserInt.cpp</url>
-          <line>482</line>
-          <option name="timeStamp" value="48" />
+          <line>466</line>
+          <option name="timeStamp" value="51" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="com.jetbrains.cidr.execution.debugger.OCBreakpointType">
           <url>file://$PROJECT_DIR$/parserInt.cpp</url>
-          <line>569</line>
-          <option name="timeStamp" value="49" />
+          <line>490</line>
+          <option name="timeStamp" value="52" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
